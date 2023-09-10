@@ -1,0 +1,72 @@
+Title:
+Author:
+Description:
+
+Q(1): Is your birthday on or after June 16, 1981?
+A: Yes
+	Q(1.1):GOTO:3
+A: No
+	Q(1.2):GOTO:2
+Q(2): You are ineligible
+Q(3): Did you enter the US before your sixteenth birthday?
+A:Yes
+	Q(3.1):GOTO:4
+A:No
+	Q(3.2):GOTO:2
+Q(4):Were you in the US on June 15, 2012?
+A: Yes
+	Q(4.1):GOTO:5
+A: No
+	Q(4.2):GOTO:2
+Q(5): Have you continuously resided in the US since June 15, 2007?
+A: Yes
+	Q(5.1):GOTO:6
+A: No
+	Q(5.2):GOTO:2
+Q(6): Were you out of status on June 15, 2012?
+A: Yes
+	Q(6.1):GOTO:7
+A: No
+	Q(6.2):GOTO:2
+Q(7):Have you been convicted of a felony or a significant misdemeanor?
+A: Yes
+	Q(7.1):GOTO:2
+A: No
+	Q(7.2):GOTO:8
+Q(8):Have you been convicted of more than one misdemeanor?
+A: Yes
+	Q(8.1):GOTO:2
+A: No
+	Q(8.2):GOTO:9
+Q(9): Do you pose a threat to national security
+A:Yes
+	Q(9.1):GOTO:2
+A:No
+	Q(9.2):GOTO:10
+Q(10): Are you currently in school?
+A:Yes
+	Q(10.1):GOTO:11
+A:NO
+	Q(10.2):GOTO:12
+Q(11): Are you over the age of 15?
+A:Yes
+	Q(11.1):GOTO:13
+A:No
+	Q(11.2):GOTO:14
+Q(12): Do you have a HS Degree or GED?
+A:Yes
+	Q(12.1):GOTO:11
+A:No
+	Q(12.2):GOTO:16
+Q(13): You are eligible
+Q(14): Are you currently in removal proceedings?
+A:Yes
+	Q(14.1):GOTO:13
+A:No:
+	Q(14.2):GOTO:15
+Q(15): Maybe, you should wait
+Q(16): Have you been honorably discharged from the Coast Guard or Armed Forces?
+A:Yes
+	Q(16.1):GOTO:13
+A:No
+	Q(16.2):GOTO:15
