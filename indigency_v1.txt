@@ -1,0 +1,68 @@
+Title: Maine Indigency Calculator
+Author: Hashim Hachem
+Before: <link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 120px 100px;background-image: url('https://1.bp.blogspot.com/-zGXI3p1LoUs/YE4iSbe_YqI/AAAAAAAA5WQ/tjOUs_mWpu4nfojIUvwGz5EkDaVCvxmrQCLcBGAsYHQ/s0/Flag_of_Maine.gif');"></div>
+<h2 style="text-align:center;">Maine Indigency Calculator</h2>
+<p><b>This is a <a href="https://www.codingthelaw.org/level/2/#mission_p2">class project</a>. You should not rely on it as a source of legal information!</b></p>
+<p>Answer the following questions to see if you qualify for appointed counsel in Maine.</p>
+
+After:
+
+<script>
+function federalpovertyguideline(household,incomeamount,percentage){
+
+		var line = NaN;
+
+		if (household == 1) {
+			line = 16038;
+		} else if (household == 2) {
+			line = 21692;
+		} else if (household == 3) {
+			line = 27346;
+		} else if (household == 4) {
+			line = 33000;
+		} else if (household == 5) {
+			line = 38654;
+		} else if (household == 6) {
+			line = 44308;
+		} else if (household == 7) {
+			line = 49962;
+		} else if (household == 8) {
+			line = 55616;
+		} else if (household > 8) {
+			line = 55616+ (household-8)*5056;
+		}
+
+		if (incomeamount <= (line*(percentage/100))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+Q(1): Have you been charged with a crime in the State of Maine? 
+A: Yes
+	Q(1.1):GOTO:2
+A: No
+	Q(1.2): You do not qualify for assistance
+
+Q(2): Is the crime for which you are charged with a misdemeanor or felony that could result in imprisonment?
+A: Yes
+	Q(household): To determine if you qualify, we need more information about your financial situation. To begin, how many people are in your household?
+	X:number
+		Q(incomeamount): How much income does your household bring in per year in before taxes?  
+		X:number
+			Q(2.1.1.1): Great. Did you remember to include Social Security, TANF, VA, unemployment and workers compensation in the annual income amount?
+			A[javascript:if (federalpovertyguideline(getvar('household'),getvar('incomeamount'),110)){ goto('validqual110') } else if (federalpovertyguideline(getvar('household'),getvar('incomeamount'),111)) { goto('noqualbut') } else { goto('no110pov') } ]: Yes
+			A: No
+				Q(2.1.1.1.2):GOTO:incomeamount
+A: No
+	Q(2.2): You do not qualify for assistance
+
+
+Q(validqual110): You qualify for the public defender as your income is below the 125% threshold. 
+
+
+Q(no110pov): You do not qualify for the public defender as your income is above the 110% threshold. 
+
