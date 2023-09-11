@@ -19,9 +19,9 @@ A: No
 
 Q(2): Is the crime for which you are charged with a misdemeanor or felony that could result in imprisonment?
 A: Yes
-	Q(household): To determine if you qualify, we need more information about your financial situation. To begin, how many people are in your household?
+	Q(household): To determine if you qualify, we need more information about your financial situation. Including yourself, how many people are in your household?
 	X:number
-		Q(incomeamount): How much income does your household bring in per year in before taxes?  
+		Q(incomeamount): How much income does your household bring in per year before taxes?  
 		X:number
 			Q(2.1.1.1): Great. Did you remember to include Social Security, TANF, VA, unemployment and workers compensation in the annual income amount?
 			A[javascript:if (federalpovertyguideline(getvar('household'),getvar('incomeamount'),110)){ goto('validqual110') } else if (federalpovertyguideline(getvar('household'),getvar('incomeamount'),111)) { goto('noqualbut') } else { goto('no110pov') } ]: Yes
